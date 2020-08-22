@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function Welcome() {
   const WelcomeContainer = styled.div`
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     /*border: 1px solid red; /* BORDER TEST*/
   `;
   const Left = styled.div`
@@ -27,11 +27,11 @@ export default function Welcome() {
     color: white;
   `;
   const Text = styled.div`
-    font-size: 64px;
+    font-size: 4em;
   `;
   const TextS = styled.div`
     margin: 10px 0;
-    font-size: 24px;
+    font-size: 1.5em;
     line-height: 30px;
   `;
   const Button = styled.button`
@@ -39,13 +39,12 @@ export default function Welcome() {
     border: 5px solid #ffffff;
     box-sizing: border-box;
     border-radius: 40px;
-    font-size: 24px;
+    font-size: 1.5em;
     line-height: 30px;
-
+    cursor: pointer;
     display: inline-block;
     color: #ffffff;
     text-align: center;
-    font-size: 28px;
     width: 205px;
     height: 69px;
     margin: 20px 10px;

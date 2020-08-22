@@ -1,20 +1,28 @@
 import React from "react";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import { theme } from "../utils/theme";
-import welcome from "../img/welcome.png";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    max-height:100vh;
+    height:1000vh;
     color: ${({ theme }) => theme.colors.dark};
     font-family: Livvic;
   margin: 0;
   padding: 0;
+  background-color:#FFFAEF;
+  color:#FFFAEF;
   }
   
   *, *::before, *::after {
     box-sizing: border-box;
   }
+  a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+*:focus {
+    outline: none;
+}
 `;
 
 const StyledWrapper = styled.div`
