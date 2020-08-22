@@ -2,15 +2,16 @@ import React from "react";
 import Layout from "./Layout";
 import NavBar from "./NavBar/NavBar";
 import Welcome from "./Welcome/Welcome";
+import Background from "./Background";
 
 function App() {
   return (
-    <div>
-      <Layout>
+    <Layout>
+      <Background>
         <NavBar />
         <Welcome />
-      </Layout>
-    </div>
+      </Background>
+    </Layout>
   );
 }
 

@@ -17,15 +17,6 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const Background = styled.div`
-  background-image: url(${welcome});
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover;
-  width: 100%;
-  height: 100vh;
-`;
-
 const StyledWrapper = styled.div`
   position: relative;
   scroll-behavior: smooth;
@@ -35,9 +26,7 @@ const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
     <>
       <GlobalStyle />
-      <StyledWrapper>
-        <Background>{children}</Background>
-      </StyledWrapper>
+      <StyledWrapper>{children}</StyledWrapper>
     </>
   </ThemeProvider>
 );
