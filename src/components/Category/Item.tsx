@@ -1,15 +1,39 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Item() {
-  const ItemContainer = styled.div`
-    background: rgba(5, 5, 5, 0.3);
-    width: 30%;
-    height: 500px;
-    position: -webkit-sticky; /* Safari */
+type ItemProps = {
+  img: string;
+  text: string;
+};
 
-    border: 1px solid yellow; /* BORDER TEST*/
+export default function Item({ img, text }: ItemProps) {
+  const ItemContainer = styled.div`
+    background-image: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
+      ),
+      url(${img});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 25vw;
+    height: 30vw;
+    position: -webkit-sticky; /* Safari */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     color: white;
   `;
-  return <ItemContainer></ItemContainer>;
+  const Text = styled.div`
+    font-size: 2.6vw;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    font-style: normal;
+  `;
+  return (
+    <ItemContainer>
+      <Text>{text}</Text>
+    </ItemContainer>
+  );
 }
