@@ -24,12 +24,20 @@ export default function Item({ img, text }: ItemProps) {
     justify-content: space-around;
     align-items: center;
     color: white;
+    @media only screen and (max-width: 1200px) {
+      width: 90vw;
+      height: 100%;
+      margin: 2.5vw 0;
+    }
   `;
   const Text = styled.div`
     font-size: 2.6vw;
     font-weight: 600;
     letter-spacing: 0.05em;
     font-style: normal;
+    @media only screen and (max-width: 1200px) {
+      font-size: 5vw;
+    }
   `;
   return (
     <ItemContainer>
