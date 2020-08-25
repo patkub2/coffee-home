@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import welcome from "../img/welcomef.png";
+import { background } from "./../img/index";
 const BackgroundContainer = styled.div`
-  background-image: url(${welcome});
+  background-image: url(${background});
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;

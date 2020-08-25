@@ -5,6 +5,7 @@ import logo from "../../img/logo.svg";
 import cart from "../../img/cart.svg";
 import emptystar from "../../img/starempty.svg";
 import search from "../../img/search.svg";
+
 const NavBarContainer = styled.div`
   background: rgba(5, 5, 5, 0.3);
   position: fixed;

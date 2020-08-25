@@ -4,6 +4,7 @@ import Item from "./Item";
 import coffee from "../../img/coffee.png";
 import accessories from "../../img/accessories.png";
 import filters from "../../img/filters.png";
+
 const CategoryContainer = styled.div`
   margin-top: 5vh;
   width: 100%;

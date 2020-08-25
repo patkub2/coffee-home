@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
     height:1000vh;
     color: ${({ theme }) => theme.colors.dark};
     font-family: Livvic;
+    font-family: 'Livvic', sans-serif;
   margin: 0;
   padding: 0;
   font-size:12px;

@@ -6,6 +6,7 @@ import Category from "./Category/Category";
 import Background from "./Background";
 import NewProduct from "./NewProduct/NewProduct";
 import Samples from "./NewProduct/Samples";
+import Products from "./Products/Products";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Category />
       <NewProduct />
       <Samples />
+      <Products />
     </Layout>
   );
 }
