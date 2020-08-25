@@ -9,8 +9,13 @@ const GlobalStyle = createGlobalStyle`
     font-family: Livvic;
   margin: 0;
   padding: 0;
+  font-size:12px;
   background-color:#FFFAEF;
   color:#FFFAEF;
+  align-items: center;
+  @media only screen and (min-width: 2000px) {
+    font-size: 16px;
+  }
   }
   
   *, *::before, *::after {

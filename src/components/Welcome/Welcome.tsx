@@ -13,6 +13,9 @@ const Left = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @media only screen and (max-width: 600px) {
+    width: 70%;
+  }
 `;
 const Center = styled.div`
   display: flex;
@@ -22,30 +25,30 @@ const Center = styled.div`
   align-items: right;
   font-style: normal;
   font-weight: 900;
-  line-height: 80px;
+
   color: white;
 `;
 const Text = styled.div`
   font-size: 4em;
+  line-height: 1.5em;
 `;
 const TextS = styled.div`
   margin: 10px 0;
-  font-size: 1.5em;
-  line-height: 30px;
+  font-size: 1.7em;
+  line-height: 1.5em;
 `;
 const Button = styled.button`
   background: none;
   border: 5px solid #ffffff;
   box-sizing: border-box;
   border-radius: 40px;
-  font-size: 1.5em;
-  line-height: 30px;
+  font-size: 1.7em;
+  line-height: 1.5em;
   cursor: pointer;
   display: inline-block;
   color: #ffffff;
   text-align: center;
-  width: 205px;
-  height: 69px;
+  padding: 15px;
   margin: 20px 10px;
 `;
 export default function Welcome() {

@@ -17,13 +17,14 @@ const SamplesContainer = styled.div`
   /* border: 1px solid red; /* BORDER TEST*/
 `;
 const Text = styled.div`
-  font-size: 2.4vw;
+  font-size: 3em;
   font-weight: 600;
   letter-spacing: 0.05em;
   font-style: normal;
-  @media only screen and (max-width: 1200px) {
-    font-size: 5vw;
-  }
+  text-align: center;
+  /* @media only screen and (max-width: 1200px) {
+    font-size: 4vw;
+  } */
 `;
 export default function Samples() {
   return (
