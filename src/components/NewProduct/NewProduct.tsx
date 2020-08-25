@@ -44,13 +44,13 @@ const Buttondiv = styled.div`
   justify-content: flex-end;
 `;
 const Text = styled.div`
-  font-size: 72px;
+  font-size: 4vw;
   font-style: normal;
   font-weight: 500;
 `;
 const TextS = styled.div`
   margin: 10px 0;
-  font-size: 1.5em;
+  font-size: 1.3vw;
   line-height: 30px;
   font-style: normal;
   font-weight: 500;
@@ -60,14 +60,13 @@ const Button = styled.button`
   background: none;
   border: 3px solid #000000;
   box-sizing: border-box;
-  font-size: 1.5em;
+  font-size: 1.5vw;
   line-height: 30px;
   cursor: pointer;
   display: inline-block;
   color: #000000;
   text-align: center;
-  width: 205px;
-  height: 69px;
+  padding: 20px 25px;
   margin: 20px 10px;
 
   margin-top: 50px;
