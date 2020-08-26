@@ -19,3 +19,4 @@ export const image5 = require("./products/image 5.png");
 export const image6 = require("./products/image 6.png");
 export const image7 = require("./products/image 7.png");
 export const image8 = require("./products/image 8.png");
+export const vector = require("./Vector.png");

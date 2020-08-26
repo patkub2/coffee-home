@@ -4,14 +4,14 @@ import { theme } from "../utils/theme";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    height:1000vh;
+    min-height:100vh;
     color: ${({ theme }) => theme.colors.dark};
     font-family: Livvic;
     font-family: 'Livvic', sans-serif;
   margin: 0;
   padding: 0;
   font-size:12px;
-  background-color:#FFFAEF;
+  background-color:#FFFFFF;
   color:#FFFAEF;
   align-items: center;
   @media only screen and (min-width: 2000px) {

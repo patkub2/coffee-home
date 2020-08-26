@@ -10,7 +10,7 @@ import {
   image8,
 } from "./../../img/index";
 const CategoryContainer = styled.div`
-  margin-top: 5vh;
+  margin-top: 10vh;
   width: 100%;
   display: flex;
   justify-content: space-around;

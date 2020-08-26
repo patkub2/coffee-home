@@ -29,7 +29,7 @@ const Center = styled.div`
   color: white;
 `;
 const Text = styled.div`
-  font-size: 4em;
+  font-size: 5em;
   line-height: 1.5em;
 `;
 const TextS = styled.div`
@@ -50,6 +50,7 @@ const Button = styled.button`
   text-align: center;
   padding: 15px;
   margin: 20px 10px;
+  width: 200px;
 `;
 export default function Welcome() {
   return (
