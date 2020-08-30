@@ -1,28 +1,32 @@
 const router = require("express").Router();
-let Exercise = require("../models/exercise.model");
+let Product = require("../models/product.model");
 
 router.route("/").get((req, res) => {
-  Exercise.find()
-    .then((exercises) => res.json(exercises))
+  Product.find()
+    .then((product) => res.json(product))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 router.route("/add").post((req, res) => {
-  const username = req.body.username;
+  const name = req.body.name;
   const description = req.body.description;
-  const duration = Number(req.body.duration);
+  const category = req.body.category;
+  const value = Number(req.body.value);
+  const img = req.body.img;
   const date = Date.parse(req.body.date);
 
-  const newExercise = new Exercise({
-    username,
+  const newProduct = new Product({
+    name,
     description,
-    duration,
+    category,
+    value,
+    img,
     date,
   });
 
-  newExercise
+  newProduct
     .save()
-    .then(() => res.json("Exercise added!"))
+    .then(() => res.json("Procdut added!"))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 

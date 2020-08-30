@@ -18,6 +18,7 @@ const userSchema = new Schema(
       trim: true,
       minlength: 3,
     },
+    cart: [{ type: Schema.Types.ObjectId, ref: "Product" }],
   },
   {
     timestamps: true,
