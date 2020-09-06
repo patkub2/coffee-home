@@ -5,7 +5,12 @@ type ItemProps = {
   img: string;
   text: string;
 };
-
+const Text = styled.div`
+  font-size: 3em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-style: normal;
+`;
 export default function Item({ img, text }: ItemProps) {
   const ItemContainer = styled.div`
     background-image: linear-gradient(
@@ -30,12 +35,7 @@ export default function Item({ img, text }: ItemProps) {
       margin: 2.5vw 0;
     }
   `;
-  const Text = styled.div`
-    font-size: 3em;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    font-style: normal;
-  `;
+
   return (
     <ItemContainer>
       <Text>{text}</Text>

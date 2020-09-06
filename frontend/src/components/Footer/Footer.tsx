@@ -18,7 +18,7 @@ const FooterContainer = styled.div`
 export default function Products() {
   return (
     <FooterContainer>
-      <img src={vector} />
+      <img src={vector} alt="img" />
     </FooterContainer>
   );
 }

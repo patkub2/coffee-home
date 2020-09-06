@@ -1,14 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Product from "./Product";
-import {
-  image4,
-  image3,
-  image5,
-  image6,
-  image7,
-  image8,
-} from "./../../img/index";
+import { image4, image5, image6, image8 } from "./../../img/index";
 const CategoryContainer = styled.div`
   margin-top: 10vh;
   width: 100%;

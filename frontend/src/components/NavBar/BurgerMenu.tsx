@@ -74,7 +74,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 export default function BurgerMenu() {
   return (
     <Menun>
-      <Menu customBurgerIcon={<img src={list} />}>
+      <Menu customBurgerIcon={<img src={list} alt=" no icon" />}>
         <a id="home" className="menu-item" href="/">
           Home
         </a>
@@ -84,7 +84,7 @@ export default function BurgerMenu() {
         <a id="contact" className="menu-item" href="/contact">
           Contact
         </a>
-        <a className="menu-item--small" href="">
+        <a className="menu-item--small" href="/">
           Settings
         </a>
       </Menu>
