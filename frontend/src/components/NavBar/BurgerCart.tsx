@@ -1,14 +1,13 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import { slide as Menu } from "react-burger-menu";
-import { NavLink } from "react-router-dom";
-import list from "../../img/list.svg";
+import cart from "../../img/cart.svg";
 const Menun = styled.div`
   .bm-burger-button {
     position: fixed;
-    width: 36px;
+    width: 30px;
     height: 30px;
-    left: 30px;
+    right: 30px;
     top: 16px;
   }
 
@@ -72,31 +71,11 @@ Note: Beware of modifying this element as it can break the animations - you shou
     background: rgba(0, 0, 0, 0.3);
   }
 `;
-
-export default function BurgerMenu() {
-  const [menuOpenState, setMenuOpenState] = useState(false);
-  const handleClose = () => {
-    setMenuOpenState(false);
-    console.log("menuOpenState close");
-  };
-  const handleOpen = () => {
-    setMenuOpenState(true);
-    console.log("menuOpenState open");
-  };
+export default function BurgerCart() {
   return (
     <Menun>
-      <Menu
-        customBurgerIcon={<img src={list} alt=" no icon" />}
-        isOpen={menuOpenState}
-        onClose={handleClose}
-        onOpen={handleOpen}
-      >
-        <NavLink onClick={handleClose} to="/home">
-          Home
-        </NavLink>
-        <NavLink to="/login" onClick={handleClose}>
-          Log in
-        </NavLink>
+      <Menu right customBurgerIcon={<img src={cart} alt=" no icon" />}>
+        <div>Your cart is empty.</div>
       </Menu>
     </Menun>
   );

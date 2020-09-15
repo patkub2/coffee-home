@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import coffebagpng from "../../img/coffebagpngh.png";
+import coffebagpng from "../../../img/coffebagpngh.png";
 const NewProductContainer = styled.div`
   width: 100%;
   max-width: 1800px;

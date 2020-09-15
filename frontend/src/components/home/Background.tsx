@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { background } from "./../img/index";
+import { background } from "../../img";
 const BackgroundContainer = styled.div`
   background-image: url(${background});
   background-position: center; /* Center the image */

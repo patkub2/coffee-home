@@ -20,5 +20,6 @@
   "homepage": "https://github.com/patkub2/coffee-home#readme",
   "devDependencies": {
     "concurrently": "^5.3.0"
-  }
+  },
+  "dependencies": {}
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import vector from "./../../img/Vector.png";
+import vector from "../../../img/Vector.png";
 const FooterContainer = styled.div`
   margin-top: 10vh;
   width: 100%;

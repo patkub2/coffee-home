@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import samplesbg from "../../img/samplesbg.png";
+import samplesbg from "../../../img/samplesbg.png";
 const SamplesContainer = styled.div`
   width: 100%;
   height: 20vh;

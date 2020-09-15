@@ -1,27 +1,24 @@
-import React from "react";
+import React, { Component } from "react";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import Layout from "./Layout";
+import Home from "./home/Home";
+import Login from "./login/Login";
 import NavBar from "./NavBar/NavBar";
-import Welcome from "./Welcome/Welcome";
-import Category from "./Category/Category";
-import Background from "./Background";
-import NewProduct from "./NewProduct/NewProduct";
-import Samples from "./NewProduct/Samples";
-import Products from "./Products/Products";
-import Footer from "./Footer/Footer";
 
 function App() {
   return (
-    <Layout>
-      <Background>
-        <NavBar />
-        <Welcome />
-      </Background>
-      <Category />
-      <NewProduct />
-      <Samples />
-      <Products />
-      <Footer />
-    </Layout>
+    <BrowserRouter>
+      <React.Fragment>
+        <Layout>
+          <NavBar />
+          <Switch>
+            <Redirect from="/" to="/home" exact />
+            <Route path="/home" component={Home} />
+            <Route path="/login" component={Login} />
+          </Switch>
+        </Layout>
+      </React.Fragment>
+    </BrowserRouter>
   );
 }
 
