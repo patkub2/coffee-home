@@ -1,10 +1,13 @@
 import React from "react";
 import Background from "./Background";
+import Window from "./Window";
 
 function Login() {
   return (
     <>
-      <Background>Hi</Background>
+      <Background>
+        <Window></Window>
+      </Background>
     </>
   );
 }

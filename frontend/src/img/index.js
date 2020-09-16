@@ -1,4 +1,5 @@
 export const background = require("./welcome.png");
+export const backgroundBlur = require("./welcome-blur.png");
 export const tea = require("./tea.png");
 export const starempty = require("./starempty.svg");
 export const star = require("./star.svg");
