@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { slide as Menu } from "react-burger-menu";
 import { NavLink } from "react-router-dom";
 import list from "../../img/list.svg";
+import { AuthContext } from "../../context/auth-context";
 const Menun = styled.div`
   .bm-burger-button {
     position: fixed;
@@ -74,6 +75,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 `;
 
 export default function BurgerMenu() {
+  const { token, logout } = useContext(AuthContext);
   const [menuOpenState, setMenuOpenState] = useState(false);
   const handleClose = () => {
     setMenuOpenState(false);
@@ -94,9 +96,15 @@ export default function BurgerMenu() {
         <NavLink onClick={handleClose} to="/home">
           Home
         </NavLink>
-        <NavLink to="/login" onClick={handleClose}>
-          Log in
-        </NavLink>
+        {token ? (
+          <NavLink to="/home" onClick={logout}>
+            Log out
+          </NavLink>
+        ) : (
+          <NavLink to="/login" onClick={handleClose}>
+            Log in
+          </NavLink>
+        )}
       </Menu>
     </Menun>
   );

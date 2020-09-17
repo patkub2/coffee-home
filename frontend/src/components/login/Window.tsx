@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { AuthContext } from "../../context/AuthContext";
+//import { AuthContext, AuthContextProvider } from "../../context/AuthContext";
+import { AuthContext } from "../../context/auth-context";
 import {
   Formik,
   FormikHelpers,
@@ -32,13 +33,18 @@ interface Values {
   email: string;
 }
 
+interface Auth {
+  token: string;
+  email: string;
+}
+
 export default function Window() {
-  const token = useContext(AuthContext);
+  const contextType = useContext(AuthContext);
   const submitHandler = (values) => {
     const password = values.password;
     const email = values.email;
     console.log(password);
-    console.log(token);
+    console.log("pre contextType token:", contextType.token);
     console.log(email);
 
     if (email.trim().length === 0 || password.trim().length === 0) {
@@ -73,12 +79,18 @@ export default function Window() {
       .then((resData) => {
         console.log(resData);
         if (resData.data.login.token) {
-          console.log(resData);
+          console.log("res data after send: " + resData);
+          contextType.login(
+            resData.data.login.token,
+            resData.data.login.userId
+          );
         }
       })
       .catch((err) => {
         console.log(err);
       });
+    console.log("..............................................");
+    console.log("contextType token:", contextType.token);
   };
   return (
     <Container>

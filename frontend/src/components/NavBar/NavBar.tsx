@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import BurgerMenu from "./BurgerMenu";
 import logo from "../../img/logo.svg";
@@ -6,6 +6,7 @@ import cart from "../../img/cart.svg";
 import user from "../../img/user.svg";
 import search from "../../img/search.svg";
 import BurgerCart from "./BurgerCart";
+import { AuthContext } from "../../context/auth-context";
 
 const NavBarContainer = styled.div`
   background: rgba(5, 5, 5, 0.3);
@@ -47,6 +48,7 @@ const Item = styled.div`
   }
 `;
 export default function NavBar() {
+  const { token } = useContext(AuthContext);
   return (
     <NavBarContainer>
       <BurgerMenu />
@@ -57,9 +59,7 @@ export default function NavBar() {
         <img src={logo} alt="noimg"></img>
       </Logo>
       <Item>
-        <div>
-          Log in <img src={user} alt="noimg" />
-        </div>
+        <div>{token ? <img src={user} alt="noimg" /> : "Log in"}</div>
       </Item>
       {/* <Items>
         <img src={cart} alt="noimg"></img>

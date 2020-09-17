@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import Layout from "./Layout";
 import Home from "./home/Home";
 import Login from "./login/Login";
 import NavBar from "./NavBar/NavBar";
-import { AuthContextProvider } from "../context/AuthContext";
+import { AuthContextProvider } from "../context/auth-context";
 
 function App() {
   return (
