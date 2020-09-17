@@ -9,16 +9,19 @@ import React, { useState } from "react";
 const AuthContext = React.createContext({
   token: null,
   userId: null,
-  login: (token, userId) => {},
+  username: null,
+  login: (token, userId, username) => {},
   logout: () => {},
 });
 
 function AuthContextProvider(props) {
   const [token, setToken] = useState(null);
   const [userId, setUserId] = useState(null);
-  function login(token, userId) {
+  const [username, setUserName] = useState(null);
+  function login(token, userId, username) {
     setToken(token);
     setUserId(userId);
+    setUserName(username);
   }
   function logout() {
     setToken(null);
@@ -31,6 +34,7 @@ function AuthContextProvider(props) {
         userId: userId,
         login: login,
         logout: logout,
+        username: username,
       }}
     >
       {props.children}

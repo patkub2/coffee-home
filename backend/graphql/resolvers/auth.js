@@ -13,6 +13,7 @@ module.exports = {
       const hashedPassword = await bcrypt.hash(args.userInput.password, 12);
 
       const user = new User({
+        username: args.userInput.username,
         email: args.userInput.email,
         password: hashedPassword,
       });
@@ -40,6 +41,11 @@ module.exports = {
         expiresIn: "2h",
       }
     );
-    return { userId: user.id, token: token, tokenExpiration: 1 };
+    return {
+      userId: user.id,
+      token: token,
+      tokenExpiration: 1,
+      username: user.username,
+    };
   },
 };

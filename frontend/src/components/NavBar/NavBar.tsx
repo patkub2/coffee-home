@@ -7,6 +7,7 @@ import user from "../../img/user.svg";
 import search from "../../img/search.svg";
 import BurgerCart from "./BurgerCart";
 import { AuthContext } from "../../context/auth-context";
+import { NavLink } from "react-router-dom";
 
 const NavBarContainer = styled.div`
   background: rgba(5, 5, 5, 0.3);
@@ -47,8 +48,9 @@ const Item = styled.div`
     }
   }
 `;
+
 export default function NavBar() {
-  const { token } = useContext(AuthContext);
+  const { token, username } = useContext(AuthContext);
   return (
     <NavBarContainer>
       <BurgerMenu />
@@ -59,7 +61,19 @@ export default function NavBar() {
         <img src={logo} alt="noimg"></img>
       </Logo>
       <Item>
-        <div>{token ? <img src={user} alt="noimg" /> : "Log in"}</div>
+        <div>
+          {token && username ? (
+            <>
+              {username} <img src={user} alt="noimg" />
+            </>
+          ) : (
+            <>
+              <NavLink to="/login">
+                Log in <img src={user} alt="noimg" />
+              </NavLink>
+            </>
+          )}
+        </div>
       </Item>
       {/* <Items>
         <img src={cart} alt="noimg"></img>

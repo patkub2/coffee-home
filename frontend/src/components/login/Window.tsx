@@ -58,6 +58,7 @@ export default function Window() {
               userId
               token
               tokenExpiration
+              username
             }
           }
         `,
@@ -82,7 +83,8 @@ export default function Window() {
           console.log("res data after send: " + resData);
           contextType.login(
             resData.data.login.token,
-            resData.data.login.userId
+            resData.data.login.userId,
+            resData.data.login.username
           );
         }
       })
