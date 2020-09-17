@@ -1,15 +1,11 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+import { useHistory, NavLink } from "react-router-dom";
 //import { AuthContext, AuthContextProvider } from "../../context/AuthContext";
+import "./window.css";
 import { AuthContext } from "../../context/auth-context";
-import {
-  Formik,
-  FormikHelpers,
-  FormikProps,
-  Form,
-  Field,
-  FieldProps,
-} from "formik";
+import { Formik, FormikHelpers, Form, Field } from "formik";
+import coffeeLogo from "../../img/coffee-logo.png";
 
 const Container = styled.div`
   /*border: 1px solid red; /* BORDER TEST*/
@@ -19,26 +15,13 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const FieldW = styled.div`
-  background: rgba(255, 255, 255, 0.8);
-  border: 3px solid #000000;
-  box-sizing: border-box;
-  border-radius: 20px;
-  width: 500px;
-  height: 500px;
-  color: black;
-`;
 interface Values {
   password: string;
   email: string;
 }
 
-interface Auth {
-  token: string;
-  email: string;
-}
-
 export default function Window() {
+  const history = useHistory();
   const contextType = useContext(AuthContext);
   const submitHandler = (values) => {
     const password = values.password;
@@ -86,6 +69,7 @@ export default function Window() {
             resData.data.login.userId,
             resData.data.login.username
           );
+          history.push("/home");
         }
       })
       .catch((err) => {
@@ -96,45 +80,50 @@ export default function Window() {
   };
   return (
     <Container>
-      <FieldW>
-        <div>
-          <h1>Signup</h1>
-          <Formik
-            initialValues={{
-              password: "",
-              email: "",
-            }}
-            onSubmit={(
-              values: Values,
-              { setSubmitting }: FormikHelpers<Values>
-            ) => {
-              setTimeout(() => {
-                submitHandler(values);
-                //console.log(JSON.stringify(values, null, 2));
-                setSubmitting(false);
-              }, 500);
-            }}
-          >
-            <Form>
-              <Field
-                id="email"
-                name="email"
-                placeholder="Email"
-                type="email"
-                //value="zadwazlote@test.pl"
-              />
-              <Field
-                id="password"
-                name="password"
-                placeholder="Password"
-                type="password"
-                //value="qwerty"
-              />
-              <button type="submit">Submit</button>
-            </Form>
-          </Formik>
-        </div>
-      </FieldW>
+      <>
+        <Formik
+          initialValues={{
+            password: "",
+            email: "",
+          }}
+          onSubmit={(
+            values: Values,
+            { setSubmitting }: FormikHelpers<Values>
+          ) => {
+            setTimeout(() => {
+              submitHandler(values);
+              //console.log(JSON.stringify(values, null, 2));
+              setSubmitting(false);
+            }, 500);
+          }}
+        >
+          <Form className="Form">
+            <img src={coffeeLogo}></img>
+            <Field
+              className="Field"
+              id="email"
+              name="email"
+              placeholder="Email"
+              type="email"
+              //value="zadwazlote@test.pl"
+            />
+            <Field
+              className="Field"
+              id="password"
+              name="password"
+              placeholder="Password"
+              type="password"
+              //value="qwerty"
+            />
+            <button type="submit" className="loggin-button">
+              Log in
+            </button>{" "}
+            {/* <NavLink to="/" className="register-button">
+              Register
+            </NavLink> */}
+          </Form>
+        </Formik>
+      </>
     </Container>
   );
 }

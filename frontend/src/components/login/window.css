@@ -1,0 +1,65 @@
+.Form {
+  box-sizing: border-box;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px;
+  height: 450px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.Form div {
+  box-sizing: border-box;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+.Field,
+.loggin-button {
+  color: white;
+  border: 3px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background: none;
+  font-size: 2rem;
+  background-color: transparent;
+  border-radius: 28px;
+  display: inline-block;
+  cursor: pointer;
+  font-family: Arial;
+  font-size: 1rem;
+  padding: 16px 31px;
+  text-decoration: none;
+  width: 70%;
+}
+.register-button {
+  font-size: 1rem;
+}
+.Field::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.loggin-button {
+  background-color: #ffffff;
+  color: black;
+  font-weight: 600;
+}
+.loggin-button:active {
+  position: relative;
+  top: 1px;
+}

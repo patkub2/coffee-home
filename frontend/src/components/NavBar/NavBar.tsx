@@ -68,9 +68,8 @@ export default function NavBar() {
             </>
           ) : (
             <>
-              <NavLink to="/login">
-                Log in <img src={user} alt="noimg" />
-              </NavLink>
+              <NavLink to="/login">Log in</NavLink>
+              <img src={user} alt="noimg" />
             </>
           )}
         </div>
