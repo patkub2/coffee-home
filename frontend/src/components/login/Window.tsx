@@ -26,9 +26,9 @@ export default function Window() {
   const submitHandler = (values) => {
     const password = values.password;
     const email = values.email;
-    console.log(password);
-    console.log("pre contextType token:", contextType.token);
-    console.log(email);
+    //console.log(password);
+    //console.log("pre contextType token:", contextType.token);
+    //console.log(email);
 
     if (email.trim().length === 0 || password.trim().length === 0) {
       return;
@@ -92,7 +92,7 @@ export default function Window() {
           ) => {
             setTimeout(() => {
               submitHandler(values);
-              //console.log(JSON.stringify(values, null, 2));
+              //console.log(JSON.stringify(values, null, 2)); //show typed values
               setSubmitting(false);
             }, 500);
           }}
