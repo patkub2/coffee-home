@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, FunctionComponent } from "react";
 import styled from "styled-components";
 import { slide as Menu } from "react-burger-menu";
 import { NavLink } from "react-router-dom";
-import list from "../../img/list.svg";
+import { ReactComponent as List } from "../../img/list.svg";
 import { AuthContext } from "../../context/auth-context";
 const Menun = styled.div`
   .bm-burger-button {
@@ -64,7 +64,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   /* Individual item */
   .bm-item {
     display: inline-block;
-    color: black;
+    color: #2e2e2e;
     margin: 20px 0;
   }
 
@@ -73,8 +73,13 @@ Note: Beware of modifying this element as it can break the animations - you shou
     background: rgba(0, 0, 0, 0.3);
   }
 `;
+type ColorProps = {
+  color: string;
+};
 
-export default function BurgerMenu() {
+export const BurgerMenu: FunctionComponent<ColorProps> = ({
+  color = "black",
+}) => {
   const { token, logout } = useContext(AuthContext);
   const [menuOpenState, setMenuOpenState] = useState(false);
   const handleClose = () => {
@@ -88,13 +93,16 @@ export default function BurgerMenu() {
   return (
     <Menun>
       <Menu
-        customBurgerIcon={<img src={list} alt=" no icon" />}
+        customBurgerIcon={<List fill={color} />}
         isOpen={menuOpenState}
         onClose={handleClose}
         onOpen={handleOpen}
       >
         <NavLink onClick={handleClose} to="/home">
           Home
+        </NavLink>
+        <NavLink onClick={handleClose} to="/shop">
+          Shop
         </NavLink>
         {token ? (
           <NavLink to="/home" onClick={logout}>
@@ -108,4 +116,5 @@ export default function BurgerMenu() {
       </Menu>
     </Menun>
   );
-}
+};
+export default BurgerMenu;

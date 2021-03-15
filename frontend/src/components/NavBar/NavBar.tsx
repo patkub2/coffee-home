@@ -1,29 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, FunctionComponent } from "react";
 import styled from "styled-components";
 import BurgerMenu from "./BurgerMenu";
-import logo from "../../img/logo.svg";
-import cart from "../../img/cart.svg";
-import user from "../../img/user.svg";
-import search from "../../img/search.svg";
+import { ReactComponent as Logo } from "../../img/logo.svg";
+import { ReactComponent as User } from "../../img/user.svg";
 import BurgerCart from "./BurgerCart";
 import { AuthContext } from "../../context/auth-context";
 import { NavLink } from "react-router-dom";
 
-const NavBarContainer = styled.div`
-  background: rgba(5, 5, 5, 0.3);
+const NavBarContainer = styled.div.attrs()`
+  background-color: ${(props) => props.background};
   position: fixed;
   width: 100%;
   height: 60px;
   display: flex;
   justify-content: space-between;
-  position: -webkit-sticky; /* Safari */
+  position: -webkit-sticky; /* Safari rgba(5, 5, 5, 0.3);*/
 
   top: 0;
   z-index: 80;
+  color: ${(props) => props.color};
   /*border: 1px solid yellow; /* BORDER TEST*/
-  color: white;
 `;
-const Logo = styled.div`
+const LogoC = styled.div`
   margin: auto;
   cursor: pointer;
   img {
@@ -43,43 +41,47 @@ const Item = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    img {
-      margin-left: 10px;
-    }
+
+    margin-right: 10px;
+    /*border: 1px solid yellow; /* BORDER TEST*/
   }
 `;
 
-export default function NavBar() {
+type ColorProps = {
+  color: string;
+  backgroundColor?: string;
+};
+
+export const NavBar: FunctionComponent<ColorProps> = ({
+  color = "black",
+  backgroundColor = "rgba(5, 5, 5, 0.3)",
+}) => {
   const { token, username } = useContext(AuthContext);
   return (
-    <NavBarContainer>
-      <BurgerMenu />
-      {/* <Menu>
-        <img src={list}></img>
-      </Menu> */}
-      <Logo>
-        <img src={logo} alt="noimg"></img>
-      </Logo>
+    <NavBarContainer color={color} background={backgroundColor}>
+      <BurgerMenu color={color} />
+
+      <LogoC>
+        <Logo fill={color}></Logo>
+      </LogoC>
       <Item>
         <div>
           {token && username ? (
             <>
-              {username} <img src={user} alt="noimg" />
+              <div>{username} </div> <User fill={color} />
             </>
           ) : (
             <>
-              <NavLink to="/login">Log in</NavLink>
-              <img src={user} alt="noimg" />
+              <div>
+                <NavLink to="/login">Log in</NavLink>
+              </div>{" "}
+              <User fill={color} />
             </>
           )}
         </div>
       </Item>
-      {/* <Items>
-        <img src={cart} alt="noimg"></img>
-        <img src={emptystar} alt="noimg"></img>
-        <img src={search} alt="noimg"></img>
-      </Items> */}
-      <BurgerCart />
+      <BurgerCart color={color} />
     </NavBarContainer>
   );
-}
+};
+export default NavBar;

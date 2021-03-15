@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 import  background  from "../../img/welcome.png";
 const BackgroundContainer = styled.div`
   background-image: url(${background});

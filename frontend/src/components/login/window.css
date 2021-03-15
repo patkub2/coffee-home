@@ -16,20 +16,10 @@
   align-items: center;
 }
 .Form div {
-  box-sizing: border-box;
-  border-radius: 20px;
-  width: 100%;
-  max-width: 500px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
+  margin: 0 auto;
+  padding: 0;
 }
+
 .Field,
 .loggin-button {
   color: white;
@@ -47,6 +37,12 @@
   padding: 16px 31px;
   text-decoration: none;
   width: 70%;
+  height: 56px;
+}
+.loggin-error {
+  font-weight: 200;
+  color: rgb(238, 0, 0);
+  font-size: 1.1rem;
 }
 .register-button {
   font-size: 1rem;

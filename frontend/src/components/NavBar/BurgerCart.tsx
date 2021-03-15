@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext, FunctionComponent } from "react";
 import styled from "styled-components";
 import { slide as Menu } from "react-burger-menu";
-import cart from "../../img/cart.svg";
+import { ReactComponent as Cart } from "../../img/cart.svg";
+import { AuthContext } from "../../context/auth-context";
+import sadcart from "../../img/sadcart.png";
 const Menun = styled.div`
+  color: black;
   .bm-burger-button {
     position: fixed;
     width: 30px;
@@ -71,12 +74,37 @@ Note: Beware of modifying this element as it can break the animations - you shou
     background: rgba(0, 0, 0, 0.3);
   }
 `;
-export default function BurgerCart() {
+const Img = styled.img`
+  max-width: 100%;
+`;
+const Text = styled.div`
+  margin: 20px 0;
+  color: #2e2e2e;
+`;
+type ColorProps = {
+  color: string;
+};
+
+export const BurgerCart: FunctionComponent<ColorProps> = ({
+  color = "white",
+}) => {
+  const { token } = useContext(AuthContext);
   return (
     <Menun>
-      <Menu right customBurgerIcon={<img src={cart} alt=" no icon" />}>
-        <div>Your cart is empty.</div>
+      <Menu right customBurgerIcon={<Cart fill={color} />}>
+        {token ? (
+          <>
+            <Img src={sadcart} />
+            <Text>Your cart is empty.</Text>
+          </>
+        ) : (
+          <>
+            <Img src={sadcart} />
+            <Text>Your need to login to see the cart.</Text>
+          </>
+        )}
       </Menu>
     </Menun>
   );
-}
+};
+export default BurgerCart;

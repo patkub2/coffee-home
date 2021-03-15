@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { useHistory, NavLink } from "react-router-dom";
 //import { AuthContext, AuthContextProvider } from "../../context/AuthContext";
@@ -6,8 +6,8 @@ import "./window.css";
 import { AuthContext } from "../../context/auth-context";
 import { Formik, FormikHelpers, Form, Field } from "formik";
 import coffeeLogo from "../../img/coffee-logo.png";
-import 'react-notifications-component/dist/theme.css'
-import { store } from 'react-notifications-component';
+import { css } from "@emotion/core";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const Container = styled.div`
   /*border: 1px solid red; /* BORDER TEST*/
@@ -17,39 +17,31 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 `;
+const override = css`
+  margin: 0 auto;
+`;
+
 interface Values {
   password: string;
   email: string;
 }
 
 export default function Window() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const history = useHistory();
   const contextType = useContext(AuthContext);
-  function call () {
-    store.addNotification({
-      title: "Error",
-      message: "Wrong email or password ",
-      type: "danger",
-      insert: "top",
-      container: "bottom-right",
-      animationIn: ["animate__animated", "animate__fadeIn"],
-      animationOut: ["animate__animated", "animate__fadeOut"],
-      dismiss: {
-        duration: 5000,
-        onScreen: true,
-      },
-    });
-  }
+  const handleLoading = () => {
+    setLoading(true);
+  };
   const submitHandler = (values) => {
     const password = values.password;
     const email = values.email;
-    //console.log(password);
-    //console.log("pre contextType token:", contextType.token);
-    //console.log(email);
-   
+    // console.log(password);
+    // console.log("pre contextType token:", contextType.token);
+    // console.log(email);
 
     if (email.trim().length === 0 || password.trim().length === 0) {
-    
       return;
     }
 
@@ -75,15 +67,15 @@ export default function Window() {
     })
       .then((res) => {
         if (res.status !== 200 && res.status !== 201) {
-          call();
+          setError(true);
           throw new Error("Failed!");
         }
         return res.json();
       })
       .then((resData) => {
-        console.log(resData);
+        //console.log(resData);
         if (resData.data.login.token) {
-          console.log("res data after send: " + resData);
+          //console.log("res data after send: " + resData);
           contextType.login(
             resData.data.login.token,
             resData.data.login.userId,
@@ -94,9 +86,11 @@ export default function Window() {
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
+        setError(true);
       });
-    console.log("..............................................");
-    console.log("contextType token:", contextType.token);
+    //console.log("..............................................");
+    //console.log("contextType token:", contextType.token);
   };
   return (
     <Container>
@@ -110,21 +104,23 @@ export default function Window() {
             values: Values,
             { setSubmitting }: FormikHelpers<Values>
           ) => {
+            handleLoading();
             setTimeout(() => {
               submitHandler(values);
-              //console.log(JSON.stringify(values, null, 2)); //show typed values
+              //console.log(JSON.stringify(values, null, 2));
               setSubmitting(false);
             }, 500);
           }}
         >
           <Form className="Form">
-            <img src={coffeeLogo}></img>
+            <img height="120" src={coffeeLogo}></img>
             <Field
               className="Field"
               id="email"
               name="email"
               placeholder="Email"
               type="email"
+              required
               //value="zadwazlote@test.pl"
             />
             <Field
@@ -134,10 +130,27 @@ export default function Window() {
               placeholder="Password"
               type="password"
               //value="qwerty"
+              required
             />
             <button type="submit" className="loggin-button">
-              Log in
+              {loading ? (
+                <div>
+                  <PulseLoader
+                    css={override}
+                    size={12}
+                    color={"black"}
+                    loading={true}
+                  />
+                </div>
+              ) : (
+                "Log in "
+              )}
             </button>{" "}
+            {error ? (
+              <div className="loggin-error">Incorrect e-mail or password</div>
+            ) : (
+              <div></div>
+            )}
             {/* <NavLink to="/" className="register-button">
               Register
             </NavLink> */}
