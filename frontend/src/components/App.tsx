@@ -5,6 +5,7 @@ import Home from "./home/Home";
 import Login from "./login/Login";
 import NavBar from "./NavBar/NavBar";
 import { AuthContextProvider, AuthContext } from "../context/auth-context";
+import ReactNotification from 'react-notifications-component'
 
 function App() {
   const { token, username } = useContext(AuthContext);
@@ -12,6 +13,7 @@ function App() {
     <BrowserRouter>
       <React.Fragment>
         <AuthContextProvider>
+        <ReactNotification />
           <Layout>
             <NavBar />
             <Switch>

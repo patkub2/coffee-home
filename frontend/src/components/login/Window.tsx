@@ -6,6 +6,8 @@ import "./window.css";
 import { AuthContext } from "../../context/auth-context";
 import { Formik, FormikHelpers, Form, Field } from "formik";
 import coffeeLogo from "../../img/coffee-logo.png";
+import 'react-notifications-component/dist/theme.css'
+import { store } from 'react-notifications-component';
 
 const Container = styled.div`
   /*border: 1px solid red; /* BORDER TEST*/
@@ -23,14 +25,31 @@ interface Values {
 export default function Window() {
   const history = useHistory();
   const contextType = useContext(AuthContext);
+  function call () {
+    store.addNotification({
+      title: "Error",
+      message: "Wrong email or password ",
+      type: "danger",
+      insert: "top",
+      container: "bottom-right",
+      animationIn: ["animate__animated", "animate__fadeIn"],
+      animationOut: ["animate__animated", "animate__fadeOut"],
+      dismiss: {
+        duration: 5000,
+        onScreen: true,
+      },
+    });
+  }
   const submitHandler = (values) => {
     const password = values.password;
     const email = values.email;
     //console.log(password);
     //console.log("pre contextType token:", contextType.token);
     //console.log(email);
+   
 
     if (email.trim().length === 0 || password.trim().length === 0) {
+    
       return;
     }
 
@@ -56,6 +75,7 @@ export default function Window() {
     })
       .then((res) => {
         if (res.status !== 200 && res.status !== 201) {
+          call();
           throw new Error("Failed!");
         }
         return res.json();
