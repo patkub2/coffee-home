@@ -1,6 +1,7 @@
 import React from "react";
 import RangeSlider from "./RangeSlider";
 import styled from "styled-components";
+import { useState, useEffect } from "react";
 
 const Container = styled.div`
   border: 1px solid red; /* BORDER TEST*/
@@ -14,6 +15,12 @@ const Container = styled.div`
   align-items: center;
 `;
 
-export default function Search() {
-  return <Container><RangeSlider></RangeSlider></Container>;
+export default function Search(props) {
+  const [childData, setChildData] = useState("1100");
+  return (
+    <Container>
+      <RangeSlider value={setChildData}> </RangeSlider>
+      {childData}
+    </Container>
+  );
 }
