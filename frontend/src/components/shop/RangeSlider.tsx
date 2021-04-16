@@ -2,7 +2,12 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
+import styled from "styled-components";
 import { withStyles } from "@material-ui/core/styles";
+
+const Div = styled.div`
+  // border: 1px solid red; /* BORDER TEST*/
+`;
 
 const useStyles = makeStyles({
   root: {
@@ -30,22 +35,24 @@ const AirbnbSlider = withStyles({
 
 export default function RangeSlider(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState<number[]>([0, 100]);
+  const [value, setValue] = React.useState<number[]>([10, 100]);
 
   const handleChange = (event: any, newValue: number | number[]) => {
     setValue(newValue as number[]);
     props.value(value);
-    //console.log(newValue);
+    console.log(newValue);
   };
   return (
-    <div className={classes.root}>
-      <AirbnbSlider
-        color="primary"
-        value={value}
-        onChange={handleChange}
-        valueLabelDisplay="auto"
-        aria-labelledby="range-slider"
-      />
-    </div>
+    <Div>
+      <div className={classes.root}>
+        <AirbnbSlider
+          color="primary"
+          value={value}
+          onChange={handleChange}
+          valueLabelDisplay="auto"
+          aria-labelledby="range-slider"
+        />
+      </div>
+    </Div>
   );
 }
