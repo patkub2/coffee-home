@@ -75,7 +75,7 @@ export default function Window() {
       .then((resData) => {
         //console.log(resData);
         if (resData.data.login.token) {
-          //console.log("res data after send: " + resData);
+          ////console.log("res data after send: " + resData);
           contextType.login(
             resData.data.login.token,
             resData.data.login.userId,

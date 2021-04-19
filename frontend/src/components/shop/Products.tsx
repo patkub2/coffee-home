@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Product from "./Product";
 import image4 from "../../img/products/image 4.png";
@@ -25,39 +25,73 @@ const ProductContainer = styled.div`
   align-items: center;
   flex-wrap: wrap;
   position: -webkit-sticky; /* Safari */
-  border: 1px solid red; /* BORDER TEST*/
+  //border: 1px solid red; /* BORDER TEST*/
 
   color: black;
 `;
+interface ProductType {
+  _id: number;
+  title: string;
+  description: string;
+  price: number;
+  category: string;
+}
 
 export default function Products() {
+  const [product, setProduct] = useState<Array<ProductType>>([]);
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
+  const fetchEvents = () => {
+    const requestBody = {
+      query: `
+      query{
+        products{
+          _id,
+          title,
+          description,
+          price,
+          category
+          }
+        }
+        `,
+    };
+
+    fetch("http://localhost:5000/graphql", {
+      method: "POST",
+      body: JSON.stringify(requestBody),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (res.status !== 200 && res.status !== 201) {
+          throw new Error("Failed!");
+        }
+        return res.json();
+      })
+      .then((resData) => {
+        setProduct(resData.data.products);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  //<button onClick={() => console.log(product[1].title)}>test</button>
   return (
     <CategoryContainer>
       <ProductContainer>
-        <Product
-          img={image4}
-          title="India"
-          desc="Blue Orca Coffee"
-          price={21.22}
-        />
-        <Product
-          img={image8}
-          title="Brazylia Santos"
-          desc="Blue Orca Coffee"
-          price={20}
-        />
-        <Product
-          img={image5}
-          title="Hounduras"
-          desc="Blue Orca Coffee"
-          price={20}
-        />
-        <Product
-          img={image6}
-          title="Hounduras"
-          desc="Blue Orca Coffee"
-          price={21}
-        />
+        {product.map((product) => (
+          <Product
+            key={product._id}
+            img={image4}
+            title={product.title}
+            desc={product.description}
+            price={product.price}
+          />
+        ))}
       </ProductContainer>
     </CategoryContainer>
   );
