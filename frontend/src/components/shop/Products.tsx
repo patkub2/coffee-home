@@ -13,7 +13,7 @@ const CategoryContainer = styled.div`
   align-items: center;
   flex-wrap: wrap;
   position: -webkit-sticky; /* Safari */
-  border: 1px solid red; /* BORDER TEST*/
+  //border: 1px solid red; /* BORDER TEST*/
 
   color: black;
 `;
@@ -39,6 +39,7 @@ interface ProductType {
 
 export default function Products() {
   const [product, setProduct] = useState<Array<ProductType>>([]);
+  const [filterd, setFilterd] = useState<Array<ProductType>>([]);
 
   useEffect(() => {
     fetchEvents();
@@ -79,7 +80,7 @@ export default function Products() {
         console.log(err);
       });
   };
-
+  const Filter = () => {};
   //<button onClick={() => console.log(product[1].title)}>test</button>;
   return (
     <CategoryContainer>
