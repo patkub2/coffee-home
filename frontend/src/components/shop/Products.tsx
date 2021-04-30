@@ -79,19 +79,24 @@ export default function Products() {
         console.log(err);
       });
   };
-  //<button onClick={() => console.log(product[1].title)}>test</button>
+
+  //<button onClick={() => console.log(product[1].title)}>test</button>;
   return (
     <CategoryContainer>
       <ProductContainer>
-        {product.map((product) => (
-          <Product
-            key={product._id}
-            img={image4}
-            title={product.title}
-            desc={product.description}
-            price={product.price}
-          />
-        ))}
+        {product[0]
+          ? product.map((product) =>
+              product.category === "cofffe" ? (
+                <Product
+                  key={product._id}
+                  img={image4}
+                  title={product.title}
+                  desc={product.description}
+                  price={product.price}
+                />
+              ) : null
+            )
+          : null}
       </ProductContainer>
     </CategoryContainer>
   );

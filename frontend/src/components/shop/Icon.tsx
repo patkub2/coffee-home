@@ -66,7 +66,7 @@ const Icon: FunctionComponent<SvgProps> = ({
   children,
 }) => {
   return (
-    <IconContainer>
+    <IconContainer onClick={() => console.log("hello")}>
       <Img>{children}</Img>
       <Text>{description}</Text>
     </IconContainer>
