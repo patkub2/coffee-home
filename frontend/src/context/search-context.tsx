@@ -7,7 +7,7 @@ import React, { useState } from "react";
 //   logout: () => {},
 // });
 const SearchContext = React.createContext({
-  price: Number,
+  price: 0,
   category: null,
 });
 
