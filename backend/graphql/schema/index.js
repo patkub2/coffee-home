@@ -49,6 +49,7 @@ type RootQuery {
     products: [Product!]!
     cart: [Cart!]!
     login(email: String!, password: String!): AuthData!
+    getProducts(category: String!, priceMin: Float!, priceMax: Float! ): [Product!]!
 }
 
 type RootMutation {
@@ -56,6 +57,7 @@ type RootMutation {
     createUser(userInput: UserInput): User
     AddToCart(productId: ID!): Cart!
     RemoveFromCart(cartId: ID!): Cart!
+    
 }
 
 schema {

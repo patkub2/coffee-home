@@ -53,7 +53,7 @@ function Shop() {
           </Icon>
         </IconContainer>
       </NavContainer>
-      <Search />
+
       <Products />
     </>
   );

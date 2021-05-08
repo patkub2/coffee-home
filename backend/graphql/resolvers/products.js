@@ -18,6 +18,25 @@ module.exports = {
     }
   },
 
+  getProducts: async (args) => {
+    try {
+      const product = await Product.find({
+        category: args.category,
+      });
+      const min = await product.filter((x) => x.price > args.priceMin);
+      const max = await min.filter((x) => x.price < args.priceMax);
+      //console.log(final);
+      return max.map((product) => {
+        return {
+          ...product._doc,
+          _id: product.id,
+        };
+      });
+    } catch (err) {
+      throw err;
+    }
+  },
+
   createProduct: async (args, req) => {
     if (!req.isAuth) {
       throw new Error("you have to log in");

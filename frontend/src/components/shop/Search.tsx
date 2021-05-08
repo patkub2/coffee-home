@@ -1,9 +1,8 @@
 import React from "react";
 import RangeSlider from "./RangeSlider";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
 
-const Container = styled.div`
+const SearchContainer = styled.div`
   //border: 1px solid red; /* BORDER TEST*/
   border-radius: 0px 0px 30px 30px;
   max-width: 100%;
@@ -43,10 +42,10 @@ const Button = styled.button`
 export default function Search(props) {
   const [childData, setChildData] = React.useState<number[]>([10, 100]);
   return (
-    <Container>
+    <SearchContainer>
       <RangeSlider value={setChildData}> </RangeSlider>
       {childData[0]} zł - {childData[1]} zł
       <Button>Search</Button>
-    </Container>
+    </SearchContainer>
   );
 }
