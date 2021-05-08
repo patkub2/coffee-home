@@ -119,11 +119,10 @@ export default function Products() {
   //<button onClick={() => console.log(product[1].title)}>test</button>;
   return (
     <>
-      <button onClick={() => console.log(product)}>test</button>
       <SearchContainer>
         <RangeSlider value={setChildData}> </RangeSlider>
         {childData[0]} zł - {childData[1]} zł
-        <Button onClick={fetchEvents()}>Search</Button>
+        <Button onClick={() => fetchEvents()}>Search</Button>
       </SearchContainer>
       <CategoryContainer>
         <ProductContainer>
