@@ -76,7 +76,6 @@ interface ProductType {
 
 export default function Products() {
   const [product, setProduct] = useState<Array<ProductType>>([]);
-  const [filterd, setFilterd] = useState<Array<ProductType>>([]);
   const [childData, setChildData] = React.useState<number[]>([10, 100]);
   useEffect(() => {
     fetchEvents();
@@ -85,7 +84,7 @@ export default function Products() {
   const fetchEvents = () => {
     const requestBody = {
       query: `
-      query{getProducts(category: "cofffe",priceMin: 2, priceMax: 24){
+      query{getProducts(category: "cofffe",priceMin: ${childData[0]}, priceMax: ${childData[1]}){
         _id,
         title,
         description,
@@ -110,7 +109,7 @@ export default function Products() {
         return res.json();
       })
       .then((resData) => {
-        setProduct(resData.data.products);
+        setProduct(resData.data.getProducts);
       })
       .catch((err) => {
         console.log(err);
@@ -120,13 +119,15 @@ export default function Products() {
   //<button onClick={() => console.log(product[1].title)}>test</button>;
   return (
     <>
+      <button onClick={() => console.log(product)}>test</button>
       <SearchContainer>
         <RangeSlider value={setChildData}> </RangeSlider>
         {childData[0]} zł - {childData[1]} zł
-        <Button>Search</Button>
+        <Button onClick={fetchEvents()}>Search</Button>
       </SearchContainer>
       <CategoryContainer>
         <ProductContainer>
+          {" "}
           {product[0]
             ? product.map((product) =>
                 product.category === "cofffe" ? (
