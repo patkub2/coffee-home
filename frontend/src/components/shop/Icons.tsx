@@ -5,10 +5,7 @@ import Icon from "./Icon";
 import { ReactComponent as Beans } from "../../img/beans.svg";
 import { ReactComponent as Filter } from "../../img/filter.svg";
 import { ReactComponent as Machine } from "../../img/machine.svg";
-import Search from "./Search";
-import Product from "./Product";
-import Products from "./Products";
-import Icons from "./Icons";
+import Checkbox from "./Checkbox";
 
 const NavContainer = styled.div`
   /*border: 1px solid red; /* BORDER TEST*/
@@ -37,13 +34,37 @@ const NavBackground = styled.div`
   height: 200px;
 `;
 
-function Shop() {
+function Icons() {
+  const [childData, setChildData] = React.useState<boolean>(false);
+  const handleCheckboxChange = () => {
+    setChildData(!childData);
+    console.log(childData);
+  };
   return (
     <>
-      <Icons />
-      <Products />
+      <NavContainer>
+        <NavBackground />
+        <IconContainer>
+          <Icon description="accesories">
+            <Machine />
+          </Icon>
+          <Icon description="filters">
+            <Filter />
+          </Icon>
+          <Icon description="coffee">
+            <Beans />
+          </Icon>
+          <Checkbox
+            checked={childData}
+            onChange={() => handleCheckboxChange()}
+            description="coffee"
+          >
+            <Beans />
+          </Checkbox>
+        </IconContainer>
+      </NavContainer>
     </>
   );
 }
 
-export default Shop;
+export default Icons;
