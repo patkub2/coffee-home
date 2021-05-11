@@ -40,7 +40,6 @@ const NavBackground = styled.div`
 function Shop() {
   return (
     <>
-      <Icons />
       <Products />
     </>
   );

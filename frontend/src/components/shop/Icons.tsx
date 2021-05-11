@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Icon from "./Icon";
 
@@ -34,25 +34,28 @@ const NavBackground = styled.div`
   height: 200px;
 `;
 
-function Icons() {
+function Icons(props) {
   const [childData, setChildData] = React.useState({
     coffee: false,
     filters: false,
     accesories: false,
   });
   const handleCheckboxChange = (name, product) => {
-    if (product == "coffee") {
+    if (product === "coffee") {
       setChildData({ ...childData, coffee: !name });
     }
-    if (product == "filters") {
+    if (product === "filters") {
       setChildData({ ...childData, filters: !name });
     }
-    if (product == "accesories") {
+    if (product === "accesories") {
       setChildData({ ...childData, accesories: !name });
     }
 
     console.log(name);
   };
+  useEffect(() => {
+    props.value(childData);
+  }, [childData]);
   return (
     <>
       <NavContainer>

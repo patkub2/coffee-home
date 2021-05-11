@@ -6,6 +6,7 @@ import image4 from "../../img/products/image 4.png";
 import image5 from "../../img/products/image 5.png";
 import image6 from "../../img/products/image 6.png";
 import image8 from "../../img/products/image 6.png";
+import Icons from "./Icons";
 const CategoryContainer = styled.div`
   margin-top: 30px;
   width: 100%;
@@ -77,6 +78,7 @@ interface ProductType {
 export default function Products() {
   const [product, setProduct] = useState<Array<ProductType>>([]);
   const [childData, setChildData] = React.useState<number[]>([10, 100]);
+  const [iconsData, setIconsData] = React.useState();
   useEffect(() => {
     fetchEvents();
   }, []);
@@ -116,9 +118,11 @@ export default function Products() {
       });
   };
   const Filter = () => {};
-  //<button onClick={() => console.log(product[1].title)}>test</button>;
+  //
   return (
     <>
+      <Icons value={setIconsData} />
+      <button onClick={() => console.log(iconsData)}>test</button>;
       <SearchContainer>
         <RangeSlider value={setChildData}> </RangeSlider>
         {childData[0]} zł - {childData[1]} zł
