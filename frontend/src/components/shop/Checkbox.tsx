@@ -1,11 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-const CheckboxContainer = styled.label`
-  display: inline-block;
-  vertical-align: middle;
-`;
-
 const Icon = styled.svg`
   fill: none;
   stroke: white;

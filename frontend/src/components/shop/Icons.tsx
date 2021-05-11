@@ -35,28 +35,48 @@ const NavBackground = styled.div`
 `;
 
 function Icons() {
-  const [childData, setChildData] = React.useState<boolean>(false);
-  const handleCheckboxChange = () => {
-    setChildData(!childData);
-    console.log(childData);
+  const [childData, setChildData] = React.useState({
+    coffee: false,
+    filters: false,
+    accesories: false,
+  });
+  const handleCheckboxChange = (name, product) => {
+    if (product == "coffee") {
+      setChildData({ ...childData, coffee: !name });
+    }
+    if (product == "filters") {
+      setChildData({ ...childData, filters: !name });
+    }
+    if (product == "accesories") {
+      setChildData({ ...childData, accesories: !name });
+    }
+
+    console.log(name);
   };
   return (
     <>
       <NavContainer>
         <NavBackground />
         <IconContainer>
-          <Icon description="accesories">
-            <Machine />
-          </Icon>
-          <Icon description="filters">
-            <Filter />
-          </Icon>
-          <Icon description="coffee">
-            <Beans />
-          </Icon>
           <Checkbox
-            checked={childData}
-            onChange={() => handleCheckboxChange()}
+            checked={childData.accesories}
+            onChange={() =>
+              handleCheckboxChange(childData.accesories, "accesories")
+            }
+            description="accesories"
+          >
+            <Machine />
+          </Checkbox>
+          <Checkbox
+            checked={childData.filters}
+            onChange={() => handleCheckboxChange(childData.filters, "filters")}
+            description="filters"
+          >
+            <Filter />
+          </Checkbox>
+          <Checkbox
+            checked={childData.coffee}
+            onChange={() => handleCheckboxChange(childData.coffee, "coffee")}
             description="coffee"
           >
             <Beans />
