@@ -56,7 +56,7 @@ export default function Product({ img, title, desc, price }: ProductProps) {
         <Title>{title}</Title>
         <TextS>{desc}</TextS>
 
-        <TextS>${price}</TextS>
+        <TextS>{price} zł</TextS>
       </div>
     </ProductContainer>
   );

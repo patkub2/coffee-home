@@ -133,7 +133,7 @@ export default function Products() {
           {" "}
           {product[0]
             ? product.map((product) =>
-                product.category === "cofffe" ? (
+                product.category === "cofffe" || "filters" ? (
                   <Product
                     key={product._id}
                     img={image4}
