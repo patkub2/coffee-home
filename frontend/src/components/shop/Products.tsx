@@ -7,6 +7,7 @@ import image5 from "../../img/products/image 5.png";
 import image6 from "../../img/products/image 6.png";
 import image8 from "../../img/products/image 6.png";
 import Icons from "./Icons";
+import { coffee } from "./../../img/index";
 const CategoryContainer = styled.div`
   margin-top: 30px;
   width: 100%;
@@ -74,11 +75,16 @@ interface ProductType {
   price: number;
   category: string;
 }
+interface iconsDataType {
+  coffee: boolean;
+  filters: boolean;
+  accesories: boolean;
+}
 
 export default function Products() {
   const [product, setProduct] = useState<Array<ProductType>>([]);
   const [childData, setChildData] = React.useState<number[]>([10, 100]);
-  const [iconsData, setIconsData] = React.useState();
+  const [iconsData, setIconsData] = React.useState<iconsDataType>();
   useEffect(() => {
     fetchEvents();
   }, []);
@@ -86,7 +92,11 @@ export default function Products() {
   const fetchEvents = () => {
     const requestBody = {
       query: `
-      query{getProducts(category: "cofffe",priceMin: ${childData[0]}, priceMax: ${childData[1]}){
+      query{getProducts(category: ["${
+        iconsData?.coffee ? "cofffe" : "null"
+      }","${iconsData?.filters ? "filters" : "null"}","${
+        iconsData?.accesories ? "accesories" : "null"
+      }"],priceMin: ${childData[0]}, priceMax: ${childData[1]}){
         _id,
         title,
         description,
@@ -122,7 +132,7 @@ export default function Products() {
   return (
     <>
       <Icons value={setIconsData} />
-      <button onClick={() => console.log(iconsData)}>test</button>;
+      <button onClick={() => console.log(iconsData?.coffee)}>test</button>;
       <SearchContainer>
         <RangeSlider value={setChildData}> </RangeSlider>
         {childData[0]} zł - {childData[1]} zł

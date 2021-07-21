@@ -49,7 +49,7 @@ type RootQuery {
     products: [Product!]!
     cart: [Cart!]!
     login(email: String!, password: String!): AuthData!
-    getProducts(category: String!, priceMin: Float!, priceMax: Float! ): [Product!]!
+    getProducts(category: [String!]!, priceMin: Float!, priceMax: Float! ): [Product!]!
 }
 
 type RootMutation {
