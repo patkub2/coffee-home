@@ -3,9 +3,6 @@ import styled from "styled-components";
 import Product from "./Product";
 import RangeSlider from "./RangeSlider";
 import image4 from "../../img/products/image 4.png";
-import image5 from "../../img/products/image 5.png";
-import image6 from "../../img/products/image 6.png";
-import image8 from "../../img/products/image 6.png";
 import Icons from "./Icons";
 import { coffee } from "./../../img/index";
 const CategoryContainer = styled.div`
